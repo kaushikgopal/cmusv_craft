@@ -1,0 +1,1 @@
+See http://journal.kaush.co/software-craftsmanship.html for details.
