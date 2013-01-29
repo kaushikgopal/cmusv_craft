@@ -2,6 +2,8 @@ require './item.rb'
 
 class GildedRose
 
+  attr_accessor :items
+
   @items = []
 
   def initialize
@@ -13,11 +15,6 @@ class GildedRose
     @items << Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)
     @items << Item.new("Conjured Mana Cake", 3, 6)
   end
-
-  def self.get_items
-    @items
-  end
-
 
   def update_quality
     for i in 0..(@items.size-1)
@@ -96,17 +93,8 @@ class GildedRose
     end
   end
 
-  def find_by_name(name, get_index)
-    @items.each do |i, indx|
-      if i.name == name
-        if get_index
-           return indx
-        else
-          return i
-        end
-      end
-    end
-  end
+
+
 
   # def find_by_sell_in(sell_in, get_index)
   #   @items.each do |i, indx|
