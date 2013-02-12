@@ -63,33 +63,25 @@ describe "Potter book calculator" do
 	end
 
 	context "Several discounts" do
-    it "debugging" do
-      basket[:book1] = 5
-      basket[:book2] = 3
-      basket[:book3] = 3
-      basket[:book4] = 0
-      basket[:book5] = 0
-      p.calc(basket)
-    end
 
-    xit "8 + (8 * 2 * 0.95) EUR for 2 book1s and 1 book3" do
+    it "8 + (8 * 2 * 0.95) EUR for 2 book1s and 1 book3" do
 	    	basket[:book1] = 2
 	    	basket[:book3] = 1
 		    expect(p.calc(basket)).to eql(8 + (8 * 2 * 0.95))
 	  end
-		xit "2 * (8 * 2 * 0.95) EUR for 2 book1s and 2 book3" do
+		it "2 * (8 * 2 * 0.95) EUR for 2 book1s and 2 book3" do
 	    	basket[:book1] = 2
 	    	basket[:book3] = 2
 		    expect(p.calc(basket)).to eql(2 * (8 * 2 * 0.95))
 	  end
-	  xit "(8 * 4 * 0.8) + (8 * 2 * 0.95) EUR for 2 book1s, 1 book2, 2 book3s, 1 book4" do
+	  it "(8 * 4 * 0.8) + (8 * 2 * 0.95) EUR for 2 book1s, 1 book2, 2 book3s, 1 book4" do
 	    	basket[:book1] = 2
 	    	basket[:book2] = 1
 	    	basket[:book3] = 2
 	    	basket[:book4] = 1
 		    expect(p.calc(basket)).to eql((8 * 4 * 0.8) + (8 * 2 * 0.95))
 	  end
-	  xit "8 + (8 * 5 * 0.75) EUR for 2 book1s, 1 book2, 2 book3s, 1 book4" do
+	  it "8 + (8 * 5 * 0.75) EUR for 1 book1s, 2 book2, 1 book3s, 1 book4, 1 book5" do
 	    	basket[:book1] = 1
 	    	basket[:book2] = 2
 	    	basket[:book3] = 1
@@ -101,7 +93,7 @@ describe "Potter book calculator" do
 	end
 
 	context "EdgeCase discounts" do
-	  xit "2 * (8 * 4 * 0.8) for 2 book1s, 2 book2s, 2 book3s, 1 book4, 1 book5 " do
+	  it "2 * (8 * 4 * 0.8) for 2 book1s, 2 book2s, 2 book3s, 1 book4, 1 book5 " do
 	    	basket[:book1] = 2
 	    	basket[:book2] = 2
 	    	basket[:book3] = 2
@@ -109,7 +101,7 @@ describe "Potter book calculator" do
 	    	basket[:book5] = 1
 		    expect(p.calc(basket)).to eql(2 * (8 * 4 * 0.8))
 	  end
-	  xit "3 * (8 * 5 * 0.75) + 2 * (8 * 4 * 0.8) for 5 book1s, 5 book2s, 4 book2s, 5 book3s, 4 book5s" do
+	  it "3 * (8 * 5 * 0.75) + 2 * (8 * 4 * 0.8) for 5 book1s, 5 book2s, 4 book2s, 5 book3s, 4 book5s" do
 	    	basket[:book1] = 5
 	    	basket[:book2] = 5
 	    	basket[:book3] = 4
