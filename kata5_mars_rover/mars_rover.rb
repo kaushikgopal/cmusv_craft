@@ -1,6 +1,6 @@
-require_relative "./obstacle"
 require_relative "./rover_position"
 require_relative "./move_rules"
+require_relative "./obstacle"
 
 class MarsRover
 	attr_accessor :rover_position, :boundary, :obstacle_hit, :obstacle_handler, :stop_on_hitting_obstacle
