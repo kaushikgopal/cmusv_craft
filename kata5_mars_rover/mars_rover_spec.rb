@@ -1,23 +1,84 @@
-require "./mars_rover"
+require_relative "./mars_rover"
+# require "./mars_rover"
 
 describe MarsRover do
   let(:rover){MarsRover.new}
+  
   it "should have starting coordinates [0,0]" do
   	expect(rover.coordinates).to eql([0,0])
   end
-  it "should allow only one of the 4 directions N,S,E or W"
+
   it "should have a grid/planet/world/boundary definition"
 
-  # You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
-  it "should have a command to set current position"
-  
+
+  describe "receives single commands" do
+    context "NORTH" do
+      before(:each) do
+        rover.direction = "N"
+      end
+      it "should move one position in the positive y coordinate for 'f'" do
+        rover.coordinates = [3,3]
+        rover.move(["f"])
+        expect(rover.coordinates).to eql([3,4])
+      end  
+      it "should move one position in the negative y axis for 'b'" do
+        rover.coordinates = [3,3]
+        rover.move(["b"])
+        expect(rover.coordinates).to eql([3,2])
+      end
+      it "should change the position to East when given 'r'" do
+        rover.move(["r"])
+        expect(rover.direction).to eql("E")
+      end
+      it "should change the position to West when given 'l'" do
+        rover.move(["l"])
+        expect(rover.direction).to eql("W")
+      end
+    end
+
+    context "SOUTH" do
+      before(:each) do
+        rover.direction = "S"
+      end
+      it "should move one position in the negative y coordinate for 'f'" do
+        rover.coordinates = [3,3]
+        rover.move(["f"])
+        expect(rover.coordinates).to eql([3,2])
+      end  
+      it "should move one position in the positive y axis for 'b'" do
+        rover.coordinates = [3,3]
+        rover.move(["b"])
+        expect(rover.coordinates).to eql([3,4])
+      end
+      it "should change the position to West when given 'r'" do
+        rover.move(["r"])
+        expect(rover.direction).to eql("W")
+      end
+      it "should change the position to East when given 'l'" do
+        rover.move(["l"])
+        expect(rover.direction).to eql("E")
+      end
+    end
+
+  end
+
   # The rover receives a character array of commands. [ffrff]
-  it "should recieve a character array of commands"
-  	# Implement commands that move the rover forward/backward (f,b).
-    # Implement commands that turn the rover left/right (l,r).
+  context "should recieve a character array of commands" do
+  end
+  
+
 
   # Implement wrapping from one edge of the grid to another. (planets are spheres after all)
   it "shoud wrap around the grid"
+
+
+
+  # You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
+  it "should have a command to set current position" do
+    rover.coordinates = [10,10]
+    expect(rover.coordinates).to eql([10,10])
+  end
+
 
 
 end
