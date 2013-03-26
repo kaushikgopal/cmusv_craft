@@ -6,8 +6,7 @@ class MarsRover
 	BACKWARD = -1
 
 	def initialize(coordinates = [0,0], direction = "N", boundary = [100,100])
-		@coordinates = coordinates
-		@direction = direction
+		reset_rover_position
 		@boundary = boundary
 		@obstacle_hit = false
 	end
@@ -15,8 +14,12 @@ class MarsRover
 	def move command_array
 		command_array[0].chars.each do |command|
 			move_single command
-			# move_single_alg command
 		end
+	end
+
+	def reset_rover_position
+		@coordinates = [0,0]
+		@direction = "N"
 	end
 
 	private
