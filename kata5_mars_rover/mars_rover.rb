@@ -98,35 +98,4 @@ class MarsRover
 			puts "couldn't understand the command '#{command}'"
 		end	
 	end	
-
-
-	# Thinking through an Algorithm
-	def move_single_alg command
-		case command.downcase
-			when "f" 
-				move_forward
-			when "b"
-				move_backward	
-		end
-	end
-	def move_forward
-		@coordinates[get_xy_coordinate_displacement] += get_increment_from_direction
-	end
-	def move_backward
-		@coordinates[get_xy_coordinate_displacement] -= get_increment_from_direction
-	end
-	def get_xy_coordinate_displacement
-		# 0 corresponds to the x coordinate in [x,y]
-		return 0 if ["E","W"].include?(@direction.upcase)
-		# 0 corresponds to the y coordinate in [x,y]
-		return 1 if ["N","S"].include?(@direction.upcase)
-	end
-	def get_increment_from_direction
-		# moving North and East correspond to positive increments in the XY axis
-		return 1 if ["N","E"].include?(@direction.upcase)
-		# moving South and West correspond to negative increments in the XY axis
-		return -1 if ["S","W"].include?(@direction.upcase)
-	end
-
-
 end
