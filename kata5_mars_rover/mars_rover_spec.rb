@@ -1,15 +1,9 @@
 require_relative "./mars_rover"
-# require "./mars_rover"
 
 describe MarsRover do
   
-  # You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
   let(:rover){MarsRover.new}
   
-  it "should have starting coordinates [0,0]" do
-    expect(rover.coordinates).to eql([0,0])
-  end
-
   context "receives single commands" do
     it "should move correctly when pointing to the North direction" do
       [
