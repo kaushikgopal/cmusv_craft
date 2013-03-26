@@ -81,7 +81,6 @@ describe MarsRover do
         [[0,0], "N", ["ffrff"], [2,2], "E"],
         [[1,1], "N", ["ffrff"], [3,3], "E"],
         [[3,4], "S", ["ffbrf"], [2,3], "W"]
-
     ].each do |coordinates, direction , command_array, expected_position, expected_direction|
       rover.direction = direction
       rover.coordinates = coordinates
@@ -104,7 +103,9 @@ describe MarsRover do
       [[0,0], "W", ["f"], [100,0]],
       [[0,0], "E", ["b"], [100,0]],
       [[100,4], "E", ["f"], [0,4]],
-      [[100,4], "W", ["b"], [0,4]]
+      [[100,4], "W", ["b"], [0,4]],
+
+      [[1,0], "S", ["ffrff"], [100,99], "W"]
 
     ].each do |initial_coordinates, direction, command, expected_position|
         rover.coordinates = initial_coordinates
@@ -116,10 +117,26 @@ describe MarsRover do
 
 
   context "Obstacle detection" do
-    let(:obstacle){Obstacle.new([1,1], [1,2])}
-    xit "should stop at an obstacle" do
+    before(:each) do
+      rover.reset_rover_position
+      rover.obstacle_handler.add_obstacle([1,1])
+      rover.obstacle_handler.add_obstacle([1,2])
+    end
+    it "should stop at an obstacle" do
       rover.move(["frff"])
       expect(rover.coordinates).to eql([0,1])
+    end
+    it "should stop at an obstacle and proceed with further directions if stop_on_hitting_obstacle is false" do
+      rover.stop_on_hitting_obstacle = false
+      rover.move(["ffrflf"])
+      expect(rover.coordinates).to eql([0,3])
+      expect(rover.direction).to eql("N")
+    end
+    it "should stop at an obstacle and proceed with further directions" do
+      rover.stop_on_hitting_obstacle = true
+      rover.move(["ffrflf"])
+      expect(rover.coordinates).to eql([0,2])
+      expect(rover.direction).to eql("E")
     end
   end
 
