@@ -4,7 +4,7 @@ describe MarsRover do
 
   let(:rover){MarsRover.new}
 
-  it "receives single commands and move correctly" do
+  it "receives single commands and moves correctly" do
     [
       [[3, 3, "N"], ["f"], [3, 4, "N"]],
       [[3, 3, "N"], ["b"], [3, 2, "N"]],
