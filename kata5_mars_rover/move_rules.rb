@@ -31,34 +31,22 @@ class MoveRules
 	def self.move_when_facing_south command
 		turn_west if command == "r"
 		turn_east if command == "l"
-		if command == "f"
-			decrease_y_coordinate
-		end
-		if command == "b"
-			increase_y_coordinate
-		end
+		decrease_y_coordinate if command == "f"
+		increase_y_coordinate if command == "b"
 	end
 
 	def self.move_when_facing_east command
 		turn_south if command == "r"
 		turn_north if command == "l"
-		if command == "f"
-			increase_x_coordinate
-		end
-		if command == "b"
-			decrease_x_coordinate
-		end
+		increase_x_coordinate if command == "f"
+		decrease_x_coordinate if command == "b"
 	end
 
 	def self.move_when_facing_west command
 		turn_north if command == "r"
 		turn_south if command == "l"
-		if command == "f"
-			decrease_x_coordinate
-		end
-		if command == "b"
-			increase_x_coordinate
-		end
+		decrease_x_coordinate if command == "f"
+		increase_x_coordinate if command == "b"
 	end
 
 	def self.increase_x_coordinate
