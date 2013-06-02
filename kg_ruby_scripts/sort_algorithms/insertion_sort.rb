@@ -4,8 +4,9 @@
 def insertion_sort(array)
 	return array if array.size < 2
 
-	array[1..array.size - 1].each_with_index do |new_element, new_element_index|
+	(1).upto(array.size - 1) do |new_element_index|
 		current_index = new_element_index
+		new_element = array[new_element_index]
 		while new_element < array[current_index - 1] && current_index > 0
 			array[current_index] = array[current_index - 1]
 			current_index -= 1
