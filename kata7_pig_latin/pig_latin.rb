@@ -1,11 +1,9 @@
 class PigLatin
 
-	VOWELS = %w(a e i o u)
-
 	def translate(text)
 		text_array = text.split(" ")
 		split_period_into_independent_characters(text_array)
-					.each_with_index { |word, index| text_array[index] = translate_word(word) }
+							.map!{ |word| translate_word(word) }
 		join_back_period_to_previous_words(text_array).join(" ")
 	end
 
@@ -39,7 +37,7 @@ class PigLatin
 	end
 
 	def starts_with_vowel?(word)
-		VOWELS.include?(word[0].downcase)
+		%w(a e i o u).include?(word[0].downcase)
 	end
 
 	def starts_with_normal_chars?(word)
