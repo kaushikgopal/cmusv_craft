@@ -7,10 +7,10 @@ describe PigLatin do
     expect(pl.respond_to?("translate")).to eql(true)
   end
 
-  context "Word translations" do
+  context "Word translation" do
 
-	  context "Consonant translation rules: " do
-	    describe "Starts with single consonant" do
+	  context "For consonants: " do
+	    describe "starts with single consonant" do
 		    it "should translate happy to appyhay" do
 		      expect(pl.translate("happy")).to eql("appyhay")
 		    end
@@ -18,7 +18,7 @@ describe PigLatin do
 		    	expect(pl.translate("duck")).to eql("uckday")
 		    end
 	    end
-	    describe "Starts with multiple consonants" do
+	    describe "starts with multiple consonants" do
 	      it "should translate glove to oveglay" do
 		    	expect(pl.translate("glove")).to eql("oveglay")
 		    end
@@ -34,7 +34,7 @@ describe PigLatin do
 	    end
 	  end
 
-	  describe "Vowel translation rules:" do
+	  describe "For vowels:" do
 	    it "should translate egg to eggway" do
 		    expect(pl.translate("egg")).to eql("eggway")
 	    end
@@ -52,14 +52,18 @@ describe PigLatin do
 
   end
 
-  context "non alpha character translation" do
+  context "For words that don't start with characters: " do
   	it "should not translate words that don't begin with alphabets" do
   		expect(pl.translate("234BalancedTrees")).to eql("234BalancedTrees")
   	end
   end
 
-  context "paragraph translation" do
-    # Punctuation?
+  context "For sentences: " do
+    it "should translate multiple sentences" do
+      para = "This is a normal sentence. We are going ahead and translating it into Pig Latin."
+	    para_translated = "Isthay isway away ormalnay entencesay. Eway areway oinggay aheadway andway anslatingtray itway intoway Igpay Atinlay."
+	    expect(pl.translate(para)).to eql(para_translated)
+    end
   end
 
 end

@@ -2,7 +2,34 @@ class PigLatin
 
 	VOWELS = %w(a e i o u)
 
-	def translate(word)
+	def translate(text)
+		text_array = text.split(" ")
+		split_period_into_independent_characters(text_array)
+					.each_with_index { |word, index| text_array[index] = translate_word(word) }
+		join_back_period_to_previous_words(text_array).join(" ")
+	end
+
+	private
+
+	def split_period_into_independent_characters(text_array)
+		text_array.each_with_index do |word, index|
+			if word.end_with?(".") && word.size > 1
+				text_array[index] = word[0..-2]
+				text_array.insert(index + 1, ".")
+			end
+		end
+	end
+
+	def join_back_period_to_previous_words(text_array)
+		text_array.each_index do |index|
+			if text_array[index + 1] == "."
+				text_array[index] << "."
+				text_array[index + 1] = nil
+			end
+		end.compact
+	end
+
+	def translate_word(word)
 		if starts_with_vowel?(word)
 			return perform_vowel_replacement(word)
 		elsif starts_with_normal_chars?(word)
@@ -10,8 +37,6 @@ class PigLatin
 		end
 		word
 	end
-
-	private
 
 	def starts_with_vowel?(word)
 		VOWELS.include?(word[0].downcase)
