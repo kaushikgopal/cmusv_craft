@@ -1,5 +1,6 @@
-class SListNode
-	attr_accessor :item, :next, :name
+class SLinkedListNode
+	attr_reader :item, :name
+	attr_accessor :next
 
 	def initialize item, name = "node_name", next_node = nil
 		@item = item
@@ -19,7 +20,7 @@ class SListNode
 	def self.print_all_nodes_from_here node
 		if node
 			node.print_node_info
-			SListNode.print_all_nodes_from_here node.next if node
+			SLinkedListNode.print_all_nodes_from_here node.next if node
 		end
 	end
 
@@ -29,12 +30,18 @@ class SListNode
 	end
 
 	# recursion
-	def find_nth_node_from_here position
+	def find_nth_node_from_here(position)
 		if position == 1
 			self
 		else
-			self.next.find_nth_node_from_here position-1
+			self.next.find_nth_node_from_here(position-1)
 		end
+	end
+
+
+	def find_nth_node_from_here_recursion(position)
+		return self if position == 0
+		self.next.find_nth_node_from_here_recursion(position - 1)
 	end
 
 end
