@@ -20,7 +20,10 @@ describe PigLatin do
 	    end
 	    describe "Starts with multiple consonants" do
 	      it "should translate glove to oveglay" do
-		      expect(pl.translate("glove")).to eql("oveglay")
+		    	expect(pl.translate("glove")).to eql("oveglay")
+		    end
+		    it "should translate for special case 'qu'" do
+		      expect(pl.translate("quiet")).to eql("ietquay")
 		    end
 	    end
 	    it "should take care of capitalization" do
@@ -53,7 +56,6 @@ describe PigLatin do
   end
 
   context "paragraph translation" do
-    # Capitalization
     # Punctuation?
   end
 

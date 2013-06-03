@@ -23,11 +23,13 @@ class PigLatin
 
 	def perform_consonant_replacement(word)
 		word_array = word.split("")
-
 		shift_char_count = 0
+		was_prev_char_q = (word[0].downcase == "q")
+
 		word_array.each do |char|
-			shift_char_count += 1 unless starts_with_vowel?(char)
-			break if starts_with_vowel?(char)
+			shift_char_count += 1 if !starts_with_vowel?(char) || was_prev_char_q
+			break if starts_with_vowel?(char) && !was_prev_char_q
+			was_prev_char_q = (char.downcase == "q")
 		end
 
 		word_array.push(	word_array.shift(shift_char_count)
