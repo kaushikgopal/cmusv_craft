@@ -25,6 +25,9 @@ describe PigLatin do
 		    it "should translate for special case 'qu'" do
 		      expect(pl.translate("quiet")).to eql("ietquay")
 		    end
+		    it "should translate for special case 'Qu'" do
+		      expect(pl.translate("Queen")).to eql("Eenquay")
+		    end
 	    end
 	    it "should take care of capitalization" do
 	      expect(pl.translate("Banana")).to eql("Ananabay")
