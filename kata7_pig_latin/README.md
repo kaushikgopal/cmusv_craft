@@ -1,9 +1,6 @@
 # Pig Latin Translator
 
-## Translator
-
-
-Basically, the Pig Latin system used here works as follows:
+## Rules
 
 1. Words that start with a vowel (A, E, I, O, U) simply have "WAY" appended to the end of the word.
 
@@ -16,6 +13,8 @@ Basically, the Pig Latin system used here works as follows:
 > "happy" → "appyhay"
 > "duck" → "uckday"
 > "glove" → "oveglay"
+
+## Special cases
 
 After implementing your solution, cross check for following special case features:
 
