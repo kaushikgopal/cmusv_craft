@@ -1,0 +1,13 @@
+#!/bin/bash
+
+nameOfClassToTest=$1
+
+function remove_class_files {
+  find . -name "*.class" -exec rm {} \;
+}
+
+remove_class_files
+javac ${nameOfClassToTest}.java
+javac ${nameOfClassToTest}Test.java
+java org.junit.runner.JUnitCore ${nameOfClassToTest}Test
+remove_class_files
