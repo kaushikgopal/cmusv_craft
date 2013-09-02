@@ -1,3 +1,7 @@
+/**
+ * Quick Find (eager approach)
+ * Runtime efficiency: Quadratic
+*/
 public class QuickFindUF {
 
   private int[] arr;
